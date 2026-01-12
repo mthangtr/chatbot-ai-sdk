@@ -1,26 +1,28 @@
 import { openrouter } from '@/lib/ai';
-import { generateText } from 'ai';
+import { streamText, convertToModelMessages, type UIMessage } from 'ai';
+import { ARBITER_SYSTEM_PROMPT } from '@/lib/arbiter-system-prompt';
+
+// Allow streaming responses up to 60 seconds
+export const maxDuration = 60;
 
 export async function POST(req: Request) {
   try {
-    const { message } = await req.json();
+    const { messages }: { messages: UIMessage[] } = await req.json();
 
-    if (!message) {
+    if (!messages || messages.length === 0) {
       return Response.json(
-        { error: 'Message is required' },
+        { error: 'Messages are required' },
         { status: 400 }
       );
     }
 
-    const result = await generateText({
+    const result = streamText({
       model: openrouter('openai/gpt-4o-mini'),
-      prompt: message,
+      system: ARBITER_SYSTEM_PROMPT,
+      messages: await convertToModelMessages(messages),
     });
 
-    return Response.json({
-      response: result.text,
-      usage: result.usage,
-    });
+    return result.toUIMessageStreamResponse();
   } catch (error) {
     console.error('Error in chat API:', error);
     return Response.json(

@@ -1,5 +1,5 @@
-import ChatComponent from "@/components/chat-component";
+import { ArbiterChat } from "@/components/chat";
 
 export default function Page() {
-  return <ChatComponent />;
+  return <ArbiterChat />;
 }

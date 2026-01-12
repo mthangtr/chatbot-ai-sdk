@@ -124,3 +124,118 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Custom animations for The Arbiter chat */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes blink {
+  0%, 50% {
+    opacity: 1;
+  }
+  51%, 100% {
+    opacity: 0;
+  }
+}
+
+@keyframes glow-pulse {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(217, 119, 6, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(217, 119, 6, 0.6);
+  }
+}
+
+.animate-shimmer {
+  animation: shimmer 2s ease-in-out infinite;
+}
+
+.animate-blink {
+  animation: blink 1s step-end infinite;
+}
+
+.animate-glow-pulse {
+  animation: glow-pulse 2s ease-in-out infinite;
+}
+
+/* Custom scrollbar styles */
+.scrollbar-thin {
+  scrollbar-width: thin;
+}
+
+.scrollbar-thumb-zinc-700::-webkit-scrollbar-thumb {
+  background-color: #3f3f46;
+  border-radius: 9999px;
+}
+
+.scrollbar-track-transparent::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #3f3f46;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+/* Markdown code block styles for highlight.js */
+.markdown-content pre code.hljs {
+  background: transparent;
+  padding: 0;
+}
+
+.markdown-content .hljs-keyword,
+.markdown-content .hljs-selector-tag,
+.markdown-content .hljs-literal,
+.markdown-content .hljs-section,
+.markdown-content .hljs-link {
+  color: #f59e0b;
+}
+
+.markdown-content .hljs-string,
+.markdown-content .hljs-title,
+.markdown-content .hljs-name,
+.markdown-content .hljs-type,
+.markdown-content .hljs-attribute,
+.markdown-content .hljs-symbol,
+.markdown-content .hljs-bullet,
+.markdown-content .hljs-addition,
+.markdown-content .hljs-variable,
+.markdown-content .hljs-template-tag,
+.markdown-content .hljs-template-variable {
+  color: #34d399;
+}
+
+.markdown-content .hljs-comment,
+.markdown-content .hljs-quote,
+.markdown-content .hljs-deletion,
+.markdown-content .hljs-meta {
+  color: #6b7280;
+}
+
+.markdown-content .hljs-number,
+.markdown-content .hljs-regexp,
+.markdown-content .hljs-literal,
+.markdown-content .hljs-params {
+  color: #f472b6;
+}
+
+.markdown-content .hljs-built_in,
+.markdown-content .hljs-builtin-name {
+  color: #60a5fa;
+}
