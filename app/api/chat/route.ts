@@ -17,7 +17,7 @@ export async function POST(req: Request) {
     }
 
     const result = streamText({
-      model: openrouter('openai/gpt-4o-mini'),
+      model: openrouter('deepseek/deepseek-v3.2'),
       system: ARBITER_SYSTEM_PROMPT,
       messages: await convertToModelMessages(messages),
     });

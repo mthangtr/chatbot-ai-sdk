@@ -5,7 +5,7 @@ import { cn } from '@/lib/utils';
 import { ChatContainer } from './chat-container';
 import { PromptForm } from './prompt-form';
 import { ChatHeader } from './chat-header';
-import { useChat } from '@/hooks/use-chat';
+import { useArbiterChat } from '@/hooks/use-arbiter-chat';
 
 interface ArbiterChatProps {
   className?: string;
@@ -24,7 +24,7 @@ export function ArbiterChat({ className }: ArbiterChatProps) {
     stopStreaming,
     regenerateMessage,
     clearMessages,
-  } = useChat({
+  } = useArbiterChat({
     onError: (error) => {
       console.error('Chat error:', error);
     },
